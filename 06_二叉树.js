@@ -43,14 +43,59 @@ function PostOrderTraverse(biTree) {
     console.log(biTree.data);
 }
 
+//深度优先非递归
+function DepthFirstSearch(biTree) {
+    let stack = [];
+    stack.push(biTree);
+
+    while (stack.length != 0) {
+        let node = stack.pop();
+        console.log(node.data);
+        if (node.rChild) {
+            stack.push(node.rChild);
+        }
+        if (node.lChild) {
+            stack.push(node.lChild);
+        }
+
+    }
+
+}
+
+
+//广度优先非递归
+function BreadthFirstSearch(biTree) {
+    let queue = [];
+    queue.push(biTree);
+    while (queue.length != 0) {
+        let node = queue.shift();
+        console.log(node.data);
+        if (node.lChild) {
+            queue.push(node.lChild);
+        }
+        if (node.rChild) {
+            queue.push(node.rChild);
+        }
+    }
+
+}
+
+
 let myTree = new TreeCode();
-console.log(myTree.createTree());
+let biTree = myTree.createTree();
+console.log(biTree);
 console.log('前序遍历')
-ProOrderTraverse(myTree.createTree());
+ProOrderTraverse(biTree);
 console.log('中序遍历')
-InOrderTraverse(myTree.createTree());
+InOrderTraverse(biTree);
 console.log('后续遍历')
-PostOrderTraverse(myTree.createTree());
+PostOrderTraverse(biTree);
+console.log('深度优先');
+DepthFirstSearch(biTree);
+console.log('广度优先')
+BreadthFirstSearch(biTree);
+
+
 
 
 
